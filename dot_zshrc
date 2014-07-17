@@ -9,7 +9,6 @@ export EDITOR='vim'
 # Shortcuts
 alias open=gnome-open
 alias grepr='grep --color -r'
-alias ls='ls --color=auto'
 alias d='tmux a'
 #alias d='screen -r dev'
 alias mpiexec='mpiexec.mpich2'
@@ -42,7 +41,9 @@ zstyle ':completion:*' completer _expand _complete _correct _approximate
 zstyle ':completion:*' format 'Completing %d'
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*' menu select=2
-eval "$(dircolors -b)"
+if [ command -v dircolors >/dev/null 2>&1 ]; then
+    eval "$(dircolors -b)"
+fi
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' list-colors ''
 zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
@@ -60,7 +61,11 @@ autoload -U colors && colors
 # This prompt will show if any background processes exist. It will also display
 # virtualenvs.
 precmd() {
-    PS1="%{$fg[green]%}[%.@%m]%{$reset_color%}"
+    if [ -n "$PROMPT_SHOW_HOST" ]; then
+        PS1="%{$fg[green]%}[%.@%m]%{$reset_color%}"
+    else
+        PS1="%{$fg[green]%}[%.]%{$reset_color%}"
+    fi
     if [ -n "$VIRTUAL_ENV" ]; then
         PS1="%{$fg[yellow]%}(`basename $VIRTUAL_ENV`)%{$reset_color%}${PS1}"
     fi
@@ -70,3 +75,8 @@ precmd() {
     fi
     PS1="${PS1}$ "
 }
+
+LANG="en_US.UTF-8"
+LC_COLLATE="en_US.UTF-8"
+LC_CTYPE="en_US.UTF-8"
+LC_ALL="en_US.UTF-8"
