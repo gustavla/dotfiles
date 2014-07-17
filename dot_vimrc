@@ -1,0 +1,76 @@
+
+colorscheme sweyla618085
+sy on
+
+" Always show tabs and trailing spaces
+set list
+set listchars=tab:▸\ ,trail:·,precedes:«,extends:»
+
+" Add a light gray column for PEP 8's column 79 requirement
+"au FileType python hi ColorColumn ctermbg=233 guibg=#2c2d27
+
+" Mark the 80th column
+au FileType python call matchadd('ColorColumn', '\%80v.', 100)
+
+" This is a very long line that should be cut off eventually okay here we go this is it
+
+set tabstop=4
+set shiftwidth=4
+set expandtab
+
+nnoremap <C-H> :tabprevious<CR>
+nnoremap <C-L> :tabnext<CR>
+
+nnoremap ; :
+"nnoremap : ;
+
+nnoremap <F5> :GundoToggle<CR>
+set pastetoggle=<F2>
+
+"nnoremap <C-H> :bp<CR>
+"nnoremap <C-L> :bn<CR>
+
+au BufNewFile,BufRead *.frag,*.vert,*.fp,*.vp,*.glsl setf glsl
+au BufNewFile,BufRead *.swift setf swift
+au BufNewFile,BufRead *.kml setf xml
+
+set incsearch
+set number
+
+let c_no_curly_error=1
+
+call pathogen#infect()
+filetype plugin indent on
+set foldmethod=marker
+
+let mapleader=","
+set nobackup
+set noswapfile
+
+set hidden
+set title
+
+nnoremap <Leader>l :ls<CR>
+nnoremap <Leader>b :bp<CR>
+nnoremap <Leader>f :bn<CR>
+nnoremap <Leader>g :e#<CR>
+nnoremap <Leader>1 :1b<CR>
+nnoremap <Leader>2 :2b<CR>
+nnoremap <Leader>3 :3b<CR>
+nnoremap <Leader>4 :4b<CR>
+nnoremap <Leader>5 :5b<CR>
+nnoremap <Leader>6 :6b<CR>
+nnoremap <Leader>7 :7b<CR>
+nnoremap <Leader>8 :8b<CR>
+nnoremap <Leader>9 :9b<CR>
+nnoremap <Leader>0 :10b<CR>
+
+nnoremap <Leader>t :%s/\s\s*$//gc<CR>
+nnoremap <Leader>c :%s/,\([^ )]\)/, \1/gc<CR>
+
+au FileType python call matchadd('ColorColumn', '\%80v.', 100)
+
+highlight User1 ctermbg=41 guibg=#0087d7 ctermfg=16 guifg=#000000
+set laststatus=2
+set statusline=%02n:%<%f\ %h%m%r%=%-14.(%l,%c%V%)%P\ %1*\ %Y\ 
+
