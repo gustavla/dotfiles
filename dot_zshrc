@@ -7,7 +7,6 @@ export VISUAL='vim'
 export EDITOR='vim'
 
 # Shortcuts
-alias open=gnome-open
 alias grepr='grep --color -r'
 alias d='tmux a'
 #alias d='screen -r dev'
