@@ -13,6 +13,7 @@ alias d='tmux a'
 alias mpiexec='mpiexec.mpich2'
 alias mpirun='mpirun.mpich2'
 alias mpython='mpirun -np 8 python'
+alias tmux='tmux -2'
 
 # Set up the prompt
 

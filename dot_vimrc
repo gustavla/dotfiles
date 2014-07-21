@@ -11,6 +11,8 @@ set listchars=tab:▸\ ,trail:·,precedes:«,extends:»
 
 " Mark the 80th column
 au FileType python call matchadd('ColorColumn', '\%80v.', 100)
+au FileType python set autoindent
+au FileType python set smartindent
 
 " This is a very long line that should be cut off eventually okay here we go this is it
 
@@ -64,6 +66,8 @@ nnoremap <Leader>7 :7b<CR>
 nnoremap <Leader>8 :8b<CR>
 nnoremap <Leader>9 :9b<CR>
 nnoremap <Leader>0 :10b<CR>
+nnoremap <Leader>w :call MyTest()<CR>
+
 
 nnoremap <Leader>t :%s/\s\s*$//gc<CR>
 nnoremap <Leader>c :%s/,\([^ )]\)/, \1/gc<CR>
