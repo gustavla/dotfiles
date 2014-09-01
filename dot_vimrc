@@ -28,6 +28,7 @@ nnoremap ; :
 
 nnoremap <F5> :GundoToggle<CR>
 set pastetoggle=<F2>
+map <F3> :Bufferlist<CR>
 
 "nnoremap <C-H> :bp<CR>
 "nnoremap <C-L> :bn<CR>
@@ -35,6 +36,7 @@ set pastetoggle=<F2>
 au BufNewFile,BufRead *.frag,*.vert,*.fp,*.vp,*.glsl setf glsl
 au BufNewFile,BufRead *.swift setf swift
 au BufNewFile,BufRead *.kml setf xml
+au BufNewFile,BufRead *.md  setf markdown
 
 set incsearch
 set number
