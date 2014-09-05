@@ -11,6 +11,7 @@ My config files for zsh, vim, tmux and IPython.
 
 * Syntax color theme
 * Shows current language
+* Shows red box as line-too-long warning in Python
 * Plenty of re-mappings
 
 ### Zsh
