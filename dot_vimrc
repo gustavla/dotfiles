@@ -70,6 +70,8 @@ nnoremap <Leader>9 :9b<CR>
 nnoremap <Leader>0 :10b<CR>
 nnoremap <Leader>w :call MyTest()<CR>
 
+" Avoid SQLComplete binding that annoyingly override <C-C>
+let g:omni_sql_no_default_maps = 1
 
 nnoremap <Leader>t :%s/\s\s*$//gc<CR>
 nnoremap <Leader>c :%s/,\([^ )]\)/, \1/gc<CR>
