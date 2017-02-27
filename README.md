@@ -1,7 +1,7 @@
 dotfiles
 ========
 
-My config files for zsh, vim, tmux and IPython.
+My config files for zsh, vim/neovim, tmux and IPython.
 
 ![Screenshot](screenshot.png)
 

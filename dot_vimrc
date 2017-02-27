@@ -1,5 +1,10 @@
+" Neovim / Vim config
+" Gustav Larsson
 
+" Syntax highlighting
+let g:airline_theme='one'
 colorscheme sweyla618085
+
 sy on
 
 " Always show tabs and trailing spaces
@@ -24,11 +29,18 @@ nnoremap <C-H> :tabprevious<CR>
 nnoremap <C-L> :tabnext<CR>
 
 nnoremap ; :
-"nnoremap : ;
 
 nnoremap <F5> :GundoToggle<CR>
 set pastetoggle=<F2>
-map <F3> :Bufferlist<CR>
+"map <F3> :Bufferlist<CR>
+"let g:splitMode = "10sp"
+map <F3> :call BufExplorerHorizontalSplit()<CR>
+"
+"
+function! BufExplorerMySplit()
+    let s:splitMode = "sp"
+    execute "BufExplorer"
+endfunction
 
 "nnoremap <C-H> :bp<CR>
 "nnoremap <C-L> :bn<CR>
@@ -43,7 +55,7 @@ set number
 
 let c_no_curly_error=1
 
-call pathogen#infect()
+"call pathogen#infect()
 filetype plugin indent on
 set foldmethod=marker
 
@@ -82,3 +94,21 @@ highlight User1 ctermbg=41 guibg=#0087d7 ctermfg=16 guifg=#000000
 set laststatus=2
 set statusline=%02n:%<%f\ %h%m%r%=%-14.(%l,%c%V%)%P\ %1*\ %Y\ 
 
+" Tensorflow migration
+nnoremap <Leader>r :%s/\([[:alpha:]]*\)_summary/summary.\1/gec<bar>%s/train\.SummaryWriter/summary.FileWriter/gec<bar>%s/tf\.initialize_all_variables/tf.global_variables_initializer/gec<bar>%s/merge_all_summaries/summary.merge_all/gec<CR>
+
+call plug#begin('~/.local/share/nvim/plugged')
+
+Plug 'junegunn/vim-easy-align'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'tpope/vim-fugitive'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'https://github.com/sjl/gundo.vim.git'
+Plug 'jlanzarotta/bufexplorer'
+
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+call plug#end()
