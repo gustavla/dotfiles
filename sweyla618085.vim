@@ -26,25 +26,20 @@ endif
 hi Cursor           guifg=NONE guibg=#FFFFFF ctermbg=255 gui=none
 hi Normal           guifg=#FFFFFF guibg=#020100 gui=none ctermfg=255 ctermbg=16 cterm=none
 hi NonText          guifg=#FFFFFF guibg=#11100F gui=none ctermfg=255 ctermbg=233 cterm=none
-hi LineNr           guifg=#313030 guibg=#1B1A19 gui=none ctermfg=236 ctermbg=234 cterm=none
-"hi StatusLine       guifg=#FFFFFF guibg=#342A0D gui=italic ctermfg=255 ctermbg=235 cterm=italic
+hi LineNr           guifg=#767676 guibg=#262626 gui=none ctermfg=243 ctermbg=235 cterm=none
 hi StatusLine       guifg=#FFFFFF guibg=#342A0D gui=italic ctermfg=236 ctermbg=246 cterm=italic
-"hi StatusLineNC     guifg=#FFFFFF guibg=#2A2928 gui=none ctermfg=255 ctermbg=235 cterm=none
 hi StatusLineNC     guifg=#FFFFFF guibg=#2A2928 gui=none ctermfg=109 ctermbg=16 cterm=none
 hi VertSplit        guifg=#FFFFFF guibg=#1B1A19 gui=none ctermfg=255 ctermbg=234 cterm=none
 hi Folded           guifg=#FFFFFF guibg=#020100 gui=none ctermfg=237 ctermbg=16 cterm=none
 hi Title            guifg=#FFCE41 guibg=NONE	gui=bold ctermfg=221 ctermbg=NONE cterm=bold
 hi Visual           guifg=#92BBB3 guibg=#323232 gui=none ctermfg=109 ctermbg=236 cterm=none
 hi SpecialKey       guifg=#8D6C1E guibg=#11100F gui=none ctermfg=94 ctermbg=233 cterm=none
-"hi DiffChange       guibg=#4D4D00 gui=none ctermbg=58 cterm=none
-"hi DiffAdd          guibg=#26264C gui=none ctermbg=235 cterm=none
-"hi DiffText         guibg=#673266 gui=none ctermbg=241 cterm=none
-"hi DiffDelete       guibg=#410000 gui=none ctermbg=52 cterm=none
+hi DiffChange       guibg=#4D4D00 gui=none ctermbg=58 cterm=none
  
-hi DiffChange       guibg=#4C4C09 gui=none ctermbg=234 cterm=none
-hi DiffAdd          guibg=#252556 gui=none ctermbg=17 cterm=none
-hi DiffText         guibg=#66326E gui=none ctermbg=22 cterm=none
-hi DiffDelete       guibg=#3F000A gui=none ctermbg=0 ctermfg=196 cterm=none
+hi DiffChange       guibg=#3F000A gui=none ctermbg=238 cterm=none
+hi DiffAdd          guibg=#005f5f gui=none ctermbg=23 cterm=none
+hi DiffText         guibg=#00875f gui=none ctermbg=29 cterm=none
+hi DiffDelete       guifg=#800000 guibg=#5f0000 gui=none ctermfg=1 ctermbg=52 cterm=none
 hi TabLineFill      guibg=#5E5E5E gui=none ctermbg=235 ctermfg=228 cterm=none
 hi TabLineSel       guifg=#92BBB3 gui=bold ctermfg=109 cterm=bold
 
