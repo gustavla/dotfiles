@@ -3,13 +3,15 @@
 # source $GIT/dotfiles/dot_zshrc
 # 
 
-export VISUAL='vim'
-export EDITOR='vim'
+export VISUAL='nvim'
+export EDITOR='nvim'
 
 # Shortcuts
 alias grepr='grep --color -r'
 alias d='tmux -2 a'
 alias tmux='tmux -2'
+alias vi='nvim'
+alias vim='nvim'
 
 # Set up the prompt
 
@@ -56,6 +58,7 @@ autoload -U colors && colors
 
 # This prompt will show if any background processes exist. It will also display
 # virtualenvs.
+
 precmd() {
     if [ -n "$PROMPT_SHOW_HOST" ]; then
         PS1="%{$fg[green]%}[%.@%m]%{$reset_color%}"
@@ -63,14 +66,38 @@ precmd() {
         PS1="%{$fg[green]%}[%.]%{$reset_color%}"
     fi
     if [ -n "$VIRTUAL_ENV" ]; then
-        PS1="%{$fg[yellow]%}(`basename $VIRTUAL_ENV`)%{$reset_color%}${PS1}"
+        PS1="(`basename $VIRTUAL_ENV`) ${PS1}"
     fi
+    if [[ $CONDA_DEFAULT_ENV != "base" ]]; then
+        PS1="($CONDA_DEFAULT_ENV) ${PS1}";
+    fi;
 
     if [ $#jobstates -ne 0 ]; then
         PS1="${PS1}(%{$fg[red]%}$#jobstates%{$reset_color%})"
     fi
     PS1="${PS1}$ "
 }
+#
+#
+#function virtualenv_prompt_info(){
+#  [[ -n ${VIRTUAL_ENV} ]] || return
+#  echo "${ZSH_THEME_VIRTUALENV_PREFIX:=(}${VIRTUAL_ENV:t}${ZSH_THEME_VIRTUALENV_SUFFIX:=) }"
+#}
+#
+#ZSH_THEME_GIT_PROMPT_PREFIX=" %{$fg[blue]%}git%{$reset_color%}:%{$fg[red]%}"
+#ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
+#ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[yellow]%}…%{$reset_color%}"
+#ZSH_THEME_GIT_PROMPT_CLEAN=""
+#
+#local prompt_jobs="%(1j.%{$fg[yellow]%}%j%{$reset_color%}%{$fg[red]%}z%{$reset_color%} .)"
+#local prompt_host="%{$fg[cyan]%}%m%{$reset_color%}"
+#local prompt_root="%(!.%{$fg_bold[red]%}#.%{$fg[green]%}$)%{$reset_color%}"
+#
+#local return_status="%{$fg[red]%}%(?..=)%{$reset_color%}"
+#
+#PROMPT='$(virtualenv_prompt_info)${prompt_host}$(git_prompt_info) %~ ${prompt_root} '
+#
+#RPROMPT="${return_status}%*"
 
 LANG="en_US.UTF-8"
 LC_COLLATE="en_US.UTF-8"
