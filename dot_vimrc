@@ -11,11 +11,13 @@ sy on
 set list
 set listchars=tab:▸\ ,trail:·,precedes:«,extends:»
 
+let g:python3_host_prog = '/usr/bin/python3'
+
 " Add a light gray column for PEP 8's column 79 requirement
 "au FileType python hi ColorColumn ctermbg=233 guibg=#2c2d27
 
 " Mark the 80th column
-au FileType python call matchadd('ColorColumn', '\%80v.', 100)
+au FileType python call matchadd('ColorColumn', '\%120v.', 100)
 au FileType python set autoindent
 au FileType python set smartindent
 
@@ -45,7 +47,7 @@ endfunction
 "nnoremap <C-H> :bp<CR>
 "nnoremap <C-L> :bn<CR>
 
-au BufNewFile,BufRead *.frag,*.vert,*.fp,*.vp,*.glsl setf glsl
+au BufNewFile,BufRead *.frag,*.vert,*.fp,*.vp,*.glsl,*.fs,*.vs setf glsl
 au BufNewFile,BufRead *.swift setf swift
 au BufNewFile,BufRead *.kml setf xml
 au BufNewFile,BufRead *.md  setf markdown
@@ -82,6 +84,31 @@ nnoremap <Leader>9 :9b<CR>
 nnoremap <Leader>0 :10b<CR>
 nnoremap <Leader>w :call MyTest()<CR>
 
+nnoremap <Leader>n :NERDTreeFocus<CR>
+nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
+
+
+" set tab width
+function SetTab2()
+  set shiftwidth=2
+  set tabstop=2
+  set softtabstop=2
+  echo "Set tab to 2 spaces"
+endfunction
+
+function SetTab4()
+  set shiftwidth=4
+  set tabstop=4
+  set softtabstop=4
+  echo "Set tab to 4 spaces"
+endfunction
+
+map t4 :call SetTab4() <CR>
+map t2 :call SetTab2() <CR>
+
+
 " Avoid SQLComplete binding that annoyingly override <C-C>
 let g:omni_sql_no_default_maps = 1
 
@@ -94,21 +121,38 @@ highlight User1 ctermbg=41 guibg=#0087d7 ctermfg=16 guifg=#000000
 set laststatus=2
 set statusline=%02n:%<%f\ %h%m%r%=%-14.(%l,%c%V%)%P\ %1*\ %Y\ 
 
-" Tensorflow migration
-nnoremap <Leader>r :%s/\([[:alpha:]]*\)_summary/summary.\1/gec<bar>%s/train\.SummaryWriter/summary.FileWriter/gec<bar>%s/tf\.initialize_all_variables/tf.global_variables_initializer/gec<bar>%s/merge_all_summaries/summary.merge_all/gec<CR>
-
 call plug#begin('~/.local/share/nvim/plugged')
 
 Plug 'junegunn/vim-easy-align'
-Plug 'SirVer/ultisnips'
+"Plug 'SirVer/ultisnips'
+Plug 'nvie/vim-flake8'
 Plug 'honza/vim-snippets'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'https://github.com/sjl/gundo.vim.git'
 Plug 'jlanzarotta/bufexplorer'
+Plug 'rust-lang/rust.vim'
+Plug 'tell-k/vim-autopep8'
+Plug 'godlygeek/tabular'
+Plug 'tikhomirov/vim-glsl'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'fidian/hexmode'
+Plug 'xolox/vim-misc'
+Plug 'dracula/vim', {'as': 'dracula'}
+Plug 'flazz/vim-colorschemes'
+Plug 'jremmen/vim-ripgrep'
+Plug 'antiagainst/vim-tablegen'
+Plug 'preservim/nerdtree'
 
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 call plug#end()
+
+colorscheme despacio-gustav
+
+"hi cCustomFunc  gui=bold guifg=yellowgreen
+"hi cCustomClass gui=reverse guifg=#00FF00
+"
+"unlet c_comment_strings
